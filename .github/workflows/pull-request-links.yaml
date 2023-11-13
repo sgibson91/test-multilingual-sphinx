@@ -1,0 +1,21 @@
+name: Add readthedocs preview links to PR descriptions
+
+on:
+  pull_request:
+    types:
+      - opened
+    branches:
+      - main
+    paths:
+      - "docs/**"
+
+permissions:
+  pull-requests: write
+
+jobs:
+  pull-request-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: readthedocs/actions/preview@v1
+        with:
+          project-slug: "test-multilingual-sphinx"
